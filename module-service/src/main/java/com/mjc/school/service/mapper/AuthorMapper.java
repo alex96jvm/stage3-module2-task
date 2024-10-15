@@ -1,15 +1,17 @@
 package com.mjc.school.service.mapper;
 
-import com.mjc.school.repository.model.impl.NewsEntity;
-import com.mjc.school.service.dto.NewsDto;
+import com.mjc.school.repository.model.impl.AuthorEntity;
+import com.mjc.school.service.dto.AuthorDto;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface AuthorMapper {
     AuthorMapper INSTANCE = Mappers.getMapper(AuthorMapper.class);
 
-    NewsDto newsEntityToNewsDto(NewsEntity newsEntity);
+    AuthorDto authorEntityToAuthorDto(AuthorEntity authorEntity);
 
-    NewsEntity newsDtoToNewsEntity(NewsDto newsDto);
+    @Mapping(target = "id", ignore = true)
+    AuthorEntity authorDtoToAuthorEntity(AuthorDto authorDto);
 }

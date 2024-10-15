@@ -10,6 +10,12 @@ public class AuthorDto {
     private LocalDateTime createDate;
     private LocalDateTime lastUpdatedDate;
 
+    public AuthorDto(String name, LocalDateTime createDate, LocalDateTime lastUpdatedDate) {
+        this.name = name;
+        this.createDate = createDate;
+        this.lastUpdatedDate = lastUpdatedDate;
+    }
+
     public Long getId() {
         return id;
     }

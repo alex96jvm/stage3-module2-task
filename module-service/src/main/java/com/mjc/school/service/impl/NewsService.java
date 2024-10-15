@@ -6,7 +6,6 @@ import com.mjc.school.repository.model.impl.NewsEntity;
 import com.mjc.school.service.BaseService;
 import com.mjc.school.service.dto.NewsDto;
 import com.mjc.school.service.mapper.NewsMapper;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
