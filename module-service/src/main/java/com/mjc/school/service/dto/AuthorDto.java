@@ -65,7 +65,7 @@ public class AuthorDto {
     public String toString() {
         return "AuthorDtoResponse[" +
                 "id=" + id +
-                ", name" + name +
+                ", name=" + name +
                 ", createDate=" + createDate.truncatedTo(ChronoUnit.SECONDS) +
                 ", lastUpdatedDate=" + lastUpdatedDate.truncatedTo(ChronoUnit.SECONDS) +
                 ']';

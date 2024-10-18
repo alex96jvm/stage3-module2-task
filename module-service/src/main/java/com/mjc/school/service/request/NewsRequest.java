@@ -1,4 +1,4 @@
-package com.mjc.school.controller.request;
+package com.mjc.school.service.request;
 
 import java.util.Objects;
 
@@ -7,6 +7,14 @@ public class NewsRequest {
     private String title;
     private String content;
     private Long authorId;
+
+    public NewsRequest(String title, String content, Long authorId) {
+        this.title = title;
+        this.content = content;
+        this.authorId = authorId;
+    }
+
+    public NewsRequest() {};
 
     public Long getId() {
         return id;

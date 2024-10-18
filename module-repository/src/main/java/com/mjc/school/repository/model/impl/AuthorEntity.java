@@ -5,13 +5,14 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class AuthorEntity implements BaseEntity<Long> {
+    private static Long count = 1L;
     private Long id;
     private String name;
     private LocalDateTime createDate;
     private LocalDateTime lastUpdatedDate;
 
-    public AuthorEntity(Long id, String name, LocalDateTime createDate, LocalDateTime lastUpdatedDate) {
-        this.id = id;
+    public AuthorEntity(String name, LocalDateTime createDate, LocalDateTime lastUpdatedDate) {
+        this.id = count++;
         this.name = name;
         this.createDate = createDate;
         this.lastUpdatedDate = lastUpdatedDate;

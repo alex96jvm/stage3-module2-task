@@ -1,13 +1,17 @@
-package com.mjc.school.controller.controller;
+package com.mjc.school.controller.impl;
 
-import com.mjc.school.controller.request.NewsRequest;
+import com.mjc.school.service.request.NewsRequest;
 import com.mjc.school.service.BaseService;
 import com.mjc.school.service.dto.NewsDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import java.util.List;
 
+@Controller
 public class NewsController implements BaseService<NewsRequest, NewsDto, Long> {
     BaseService<NewsRequest, NewsDto, Long> baseService;
 
+    @Autowired
     public NewsController(BaseService<NewsRequest, NewsDto, Long> baseService){
         this.baseService = baseService;
     }

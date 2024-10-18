@@ -1,10 +1,16 @@
-package com.mjc.school.controller.request;
+package com.mjc.school.service.request;
 
 import java.util.Objects;
 
 public class AuthorRequest {
     private Long id;
     private String name;
+
+    public AuthorRequest(String name) {
+        this.name = name;
+    }
+
+    public AuthorRequest() {};
 
     public Long getId() {
         return id;

@@ -3,12 +3,16 @@ package com.mjc.school.repository.impl;
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.datasource.NewsDataSource;
 import com.mjc.school.repository.model.impl.NewsEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class NewsRepository implements BaseRepository<NewsEntity, Long> {
     private final NewsDataSource newsDataSource;
 
+    @Autowired
     public NewsRepository(NewsDataSource newsDataSource) {
         this.newsDataSource = newsDataSource;
     }
@@ -34,7 +38,8 @@ public class NewsRepository implements BaseRepository<NewsEntity, Long> {
 
     @Override
     public NewsEntity update(NewsEntity newsEntity) {
-        readAll().set(readAll().indexOf(newsEntity), newsEntity);
+        newsEntity.setCreateDate(readById(newsEntity.getId()).orElseThrow().getCreateDate());
+        readAll().set(readAll().indexOf(readById(newsEntity.getId()).orElseThrow()), newsEntity);
         return newsEntity;
     }
 

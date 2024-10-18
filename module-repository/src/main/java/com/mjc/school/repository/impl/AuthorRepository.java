@@ -4,14 +4,18 @@ import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.datasource.AuthorDataSource;
 import com.mjc.school.repository.datasource.NewsDataSource;
 import com.mjc.school.repository.model.impl.AuthorEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class AuthorRepository implements BaseRepository <AuthorEntity, Long> {
 
-AuthorDataSource authorDataSource;
-NewsDataSource newsDataSource;
+private final AuthorDataSource authorDataSource;
+private final NewsDataSource newsDataSource;
 
+@Autowired
 public AuthorRepository(AuthorDataSource authorDataSource, NewsDataSource newsDataSource){
     this.authorDataSource = authorDataSource;
     this.newsDataSource = newsDataSource;
@@ -38,13 +42,14 @@ public AuthorRepository(AuthorDataSource authorDataSource, NewsDataSource newsDa
 
     @Override
     public AuthorEntity update(AuthorEntity authorEntity) {
-        readAll().set(readAll().indexOf(authorEntity), authorEntity);
+        authorEntity.setCreateDate(readById(authorEntity.getId()).orElseThrow().getCreateDate());
+        readAll().set(readAll().indexOf(readById(authorEntity.getId()).orElseThrow()), authorEntity);
         return authorEntity;
     }
 
     @Override
     public boolean deleteById(Long id) {
-        newsDataSource.getAllNews().removeIf(newsEntity -> newsEntity.getId().equals(id));
+        newsDataSource.getAllNews().removeIf(newsEntity -> newsEntity.getAuthorId().equals(id));
         return readById(id).isPresent() && readAll().remove(readById(id).get());
     }
 

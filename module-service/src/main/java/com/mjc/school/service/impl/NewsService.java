@@ -1,17 +1,21 @@
 package com.mjc.school.service.impl;
 
-import com.mjc.school.controller.request.NewsRequest;
+import com.mjc.school.service.request.NewsRequest;
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.model.impl.NewsEntity;
 import com.mjc.school.service.BaseService;
 import com.mjc.school.service.dto.NewsDto;
 import com.mjc.school.service.mapper.NewsMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Service
 public class NewsService implements BaseService<NewsRequest, NewsDto, Long> {
-    BaseRepository<NewsEntity, Long> baseRepository;
+    private final BaseRepository<NewsEntity, Long> baseRepository;
 
+    @Autowired
     public NewsService(BaseRepository<NewsEntity, Long> baseRepository) {
         this.baseRepository = baseRepository;
     }
@@ -37,7 +41,7 @@ public class NewsService implements BaseService<NewsRequest, NewsDto, Long> {
                 LocalDateTime.now(),
                 LocalDateTime.now(),
                 createRequest.getAuthorId());
-        baseRepository.create(mapToNewsEntity(newsDto));
+        newsDto.setId(baseRepository.create(mapToNewsEntity(newsDto)).getId());
         return newsDto;
     }
 
@@ -53,8 +57,7 @@ public class NewsService implements BaseService<NewsRequest, NewsDto, Long> {
                 updateRequest.getAuthorId());
         NewsEntity newsEntity = mapToNewsEntity(newsDto);
         newsEntity.setId(updateRequest.getId());
-        baseRepository.update(newsEntity);
-        return newsDto;
+        return mapToNewsDto(baseRepository.update(newsEntity));
     }
 
     @Override

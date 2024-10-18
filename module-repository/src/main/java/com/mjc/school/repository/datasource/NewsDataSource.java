@@ -1,6 +1,8 @@
 package com.mjc.school.repository.datasource;
 
 import com.mjc.school.repository.model.impl.NewsEntity;
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -12,13 +14,16 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Logger;
 
+@Component
 public class NewsDataSource {
+    private final AuthorDataSource authorDataSource;
     private final Logger logger;
     private final List<NewsEntity> allNews;
 
-    public NewsDataSource() {
-        logger = Logger.getLogger(NewsDataSource.class.getName());
-        allNews = new ArrayList<>();
+    public NewsDataSource(AuthorDataSource authorDataSource) {
+        this.authorDataSource = authorDataSource;
+        this.logger = Logger.getLogger(NewsDataSource.class.getName());
+        this.allNews = new ArrayList<>();
         loadNews();
     }
 
@@ -32,7 +37,7 @@ public class NewsDataSource {
             String contentFilePath = properties.getProperty("contentFilePath");
             var titles = Files.readAllLines(Paths.get(newsFilePath));
             var contents = Files.readAllLines(Paths.get(contentFilePath));
-            var authors = new AuthorDataSource().getAuthors();
+            var authors = authorDataSource.getAuthors();
             Random random = new Random();
             for (int i = 0; i < INITIAL_CAPACITY; i++){
                 allNews.add(new NewsEntity(
