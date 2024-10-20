@@ -1,11 +1,11 @@
 package com.mjc.school.service.impl;
 
-import com.mjc.school.service.request.NewsRequest;
+import com.mjc.school.request.NewsRequest;
 import com.mjc.school.repository.BaseRepository;
-import com.mjc.school.repository.model.impl.NewsEntity;
+import com.mjc.school.model.impl.NewsEntity;
 import com.mjc.school.service.BaseService;
-import com.mjc.school.service.dto.NewsDto;
-import com.mjc.school.service.mapper.NewsMapper;
+import com.mjc.school.dto.NewsDto;
+import com.mjc.school.mapper.NewsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
@@ -50,13 +50,11 @@ public class NewsService implements BaseService<NewsRequest, NewsDto, Long> {
         if (!baseRepository.existById(updateRequest.getId())) {
             throw new RuntimeException();
         }
-        NewsDto newsDto = new NewsDto(updateRequest.getTitle(),
-                updateRequest.getContent(),
-                LocalDateTime.now(),
-                LocalDateTime.now(),
-                updateRequest.getAuthorId());
-        NewsEntity newsEntity = mapToNewsEntity(newsDto);
-        newsEntity.setId(updateRequest.getId());
+        NewsEntity newsEntity = baseRepository.readById(updateRequest.getId()).orElseThrow();
+        newsEntity.setTitle(updateRequest.getTitle());
+        newsEntity.setContent(updateRequest.getContent());
+        newsEntity.setLastUpdatedDate(LocalDateTime.now());
+        newsEntity.setAuthorId(updateRequest.getAuthorId());
         return mapToNewsDto(baseRepository.update(newsEntity));
     }
 

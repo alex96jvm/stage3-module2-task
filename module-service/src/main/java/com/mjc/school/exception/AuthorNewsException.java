@@ -1,4 +1,4 @@
-package com.mjc.school.service.exception;
+package com.mjc.school.exception;
 
 public class AuthorNewsException extends Exception{
     private final String errorCode;

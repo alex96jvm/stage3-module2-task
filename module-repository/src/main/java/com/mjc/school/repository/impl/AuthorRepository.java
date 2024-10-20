@@ -1,9 +1,9 @@
 package com.mjc.school.repository.impl;
 
 import com.mjc.school.repository.BaseRepository;
-import com.mjc.school.repository.datasource.AuthorDataSource;
-import com.mjc.school.repository.datasource.NewsDataSource;
-import com.mjc.school.repository.model.impl.AuthorEntity;
+import com.mjc.school.datasource.AuthorDataSource;
+import com.mjc.school.datasource.NewsDataSource;
+import com.mjc.school.model.impl.AuthorEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.List;

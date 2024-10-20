@@ -1,4 +1,4 @@
-package com.mjc.school.service.request;
+package com.mjc.school.request;
 
 import java.util.Objects;
 

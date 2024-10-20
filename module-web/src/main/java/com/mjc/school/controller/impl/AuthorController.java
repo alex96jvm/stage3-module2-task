@@ -1,9 +1,12 @@
 package com.mjc.school.controller.impl;
 
+import com.mjc.school.annotation.CommandBody;
+import com.mjc.school.annotation.CommandHandler;
+import com.mjc.school.annotation.CommandParam;
 import com.mjc.school.controller.BaseController;
-import com.mjc.school.service.request.AuthorRequest;
+import com.mjc.school.request.AuthorRequest;
 import com.mjc.school.service.BaseService;
-import com.mjc.school.service.dto.AuthorDto;
+import com.mjc.school.dto.AuthorDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import java.util.List;
@@ -18,27 +21,32 @@ public class AuthorController implements BaseController<AuthorRequest, AuthorDto
     }
 
     @Override
+    @CommandHandler("readAll")
     public List<AuthorDto> readAll() {
         return baseService.readAll();
     }
 
     @Override
-    public AuthorDto readById(Long id) {
+    @CommandHandler("readById")
+    public AuthorDto readById(@CommandParam("id") Long id) {
         return baseService.readById(id);
     }
 
     @Override
-    public AuthorDto create(AuthorRequest createRequest) {
+    @CommandHandler("create")
+    public AuthorDto create(@CommandBody AuthorRequest createRequest) {
         return baseService.create(createRequest);
     }
 
     @Override
-    public AuthorDto update(AuthorRequest updateRequest) {
+    @CommandHandler("update")
+    public AuthorDto update(@CommandBody AuthorRequest updateRequest) {
         return baseService.update(updateRequest);
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    @CommandHandler("delete")
+    public boolean deleteById(@CommandParam("id") Long id) {
         return baseService.deleteById(id);
     }
 }

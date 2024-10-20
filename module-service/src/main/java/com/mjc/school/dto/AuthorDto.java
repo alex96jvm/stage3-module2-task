@@ -1,4 +1,4 @@
-package com.mjc.school.service.dto;
+package com.mjc.school.dto;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -68,6 +68,6 @@ public class AuthorDto {
                 ", name=" + name +
                 ", createDate=" + createDate.truncatedTo(ChronoUnit.SECONDS) +
                 ", lastUpdatedDate=" + lastUpdatedDate.truncatedTo(ChronoUnit.SECONDS) +
-                ']';
+                "]\n";
     }
 }

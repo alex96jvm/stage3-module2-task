@@ -1,6 +1,6 @@
-package com.mjc.school.repository.datasource;
+package com.mjc.school.datasource;
 
-import com.mjc.school.repository.model.impl.NewsEntity;
+import com.mjc.school.model.impl.NewsEntity;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;

@@ -1,8 +1,11 @@
 package com.mjc.school.controller.impl;
 
-import com.mjc.school.service.request.NewsRequest;
+import com.mjc.school.annotation.CommandBody;
+import com.mjc.school.annotation.CommandHandler;
+import com.mjc.school.annotation.CommandParam;
+import com.mjc.school.request.NewsRequest;
 import com.mjc.school.service.BaseService;
-import com.mjc.school.service.dto.NewsDto;
+import com.mjc.school.dto.NewsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import java.util.List;
@@ -17,27 +20,32 @@ public class NewsController implements BaseService<NewsRequest, NewsDto, Long> {
     }
 
     @Override
+    @CommandHandler("readAll")
     public List<NewsDto> readAll() {
         return baseService.readAll();
     }
 
     @Override
-    public NewsDto readById(Long id) {
+    @CommandHandler("readById")
+    public NewsDto readById(@CommandParam("id") Long id) {
         return baseService.readById(id);
     }
 
     @Override
-    public NewsDto create(NewsRequest createRequest) {
+    @CommandHandler("create")
+    public NewsDto create(@CommandBody NewsRequest createRequest) {
         return baseService.create(createRequest);
     }
 
     @Override
-    public NewsDto update(NewsRequest updateRequest) {
+    @CommandHandler("update")
+    public NewsDto update(@CommandBody NewsRequest updateRequest) {
         return baseService.update(updateRequest);
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    @CommandHandler("delete")
+    public boolean deleteById(@CommandParam("id") Long id) {
         return baseService.deleteById(id);
     }
 }
