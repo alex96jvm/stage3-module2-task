@@ -7,19 +7,16 @@ import com.mjc.school.request.NewsRequest;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class ValidationAspect {
-    public final AuthorRepository authorRepository;
-    public final NewsRepository newsRepository;
-
-    public ValidationAspect(AuthorRepository authorRepository, NewsRepository newsRepository) {
-        this.authorRepository = authorRepository;
-        this.newsRepository = newsRepository;
-    }
-
+    @Autowired
+    public AuthorRepository authorRepository;
+    @Autowired
+    public NewsRepository newsRepository;
     @Before("@annotation(validateLength)")
     public void validateLength(JoinPoint joinPoint, ValidateLength validateLength) {
         Object[] args = joinPoint.getArgs();

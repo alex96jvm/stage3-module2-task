@@ -5,7 +5,6 @@ public final class ErrorCodes {
     public static final String NEWS_NOT_FOUND = formatErrorCode("000001");
     public static final String AUTHOR_NOT_FOUND = formatErrorCode("000002");
     public static final String INVALID_LENGTH = formatErrorCode("000012");
-    public static final String NOT_NUMERIC = formatErrorCode("000013");
 
     private ErrorCodes() {}
 

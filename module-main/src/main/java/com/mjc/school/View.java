@@ -4,7 +4,6 @@ import com.mjc.school.annotation.AuthorCommandProcessor;
 import com.mjc.school.annotation.NewsCommandProcessor;
 import com.mjc.school.controller.impl.AuthorController;
 import com.mjc.school.controller.impl.NewsController;
-import com.mjc.school.validation.ErrorCodes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.HashMap;
@@ -229,7 +228,7 @@ public class View {
         try {
             return Long.parseLong(id);
         } catch (NumberFormatException e) {
-            System.out.println(ErrorCodes.NOT_NUMERIC + subValue + " Id should be number");
+            System.out.println("ERROR_CODE: 000013 ERROR_MESSAGE: "  + subValue + " Id should be number");
             throw new Exception();
         }
     }
