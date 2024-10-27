@@ -6,6 +6,8 @@ import com.mjc.school.model.impl.NewsEntity;
 import com.mjc.school.service.BaseService;
 import com.mjc.school.dto.NewsDto;
 import com.mjc.school.mapper.NewsMapper;
+import com.mjc.school.validation.ValidateId;
+import com.mjc.school.validation.ValidateLength;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @Service
 public class NewsService implements BaseService<NewsRequest, NewsDto, Long> {
+    private final String CHECK_NEWS_ID = "CHECK_NEWS_ID";
     private final BaseRepository<NewsEntity, Long> baseRepository;
 
     @Autowired
@@ -28,6 +31,7 @@ public class NewsService implements BaseService<NewsRequest, NewsDto, Long> {
     }
 
     @Override
+    @ValidateId(type = CHECK_NEWS_ID)
     public NewsDto readById(Long id) {
         return baseRepository.readById(id)
                 .map(this::mapToNewsDto)
@@ -35,6 +39,8 @@ public class NewsService implements BaseService<NewsRequest, NewsDto, Long> {
     }
 
     @Override
+    @ValidateLength
+    @ValidateId
     public NewsDto create(NewsRequest createRequest) {
         NewsDto newsDto = new NewsDto(createRequest.getTitle(),
                 createRequest.getContent(),
@@ -46,10 +52,9 @@ public class NewsService implements BaseService<NewsRequest, NewsDto, Long> {
     }
 
     @Override
+    @ValidateLength
+    @ValidateId
     public NewsDto update(NewsRequest updateRequest) {
-        if (!baseRepository.existById(updateRequest.getId())) {
-            throw new RuntimeException();
-        }
         NewsEntity newsEntity = baseRepository.readById(updateRequest.getId()).orElseThrow();
         newsEntity.setTitle(updateRequest.getTitle());
         newsEntity.setContent(updateRequest.getContent());
@@ -59,10 +64,8 @@ public class NewsService implements BaseService<NewsRequest, NewsDto, Long> {
     }
 
     @Override
+    @ValidateId(type = CHECK_NEWS_ID)
     public boolean deleteById(Long id) {
-        if (!baseRepository.existById(id)) {
-            throw new RuntimeException();
-        }
         return baseRepository.deleteById(id);
     }
 

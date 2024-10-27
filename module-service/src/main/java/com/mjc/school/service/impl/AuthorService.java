@@ -1,12 +1,13 @@
 package com.mjc.school.service.impl;
 
-import com.mjc.school.model.impl.NewsEntity;
 import com.mjc.school.request.AuthorRequest;
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.model.impl.AuthorEntity;
 import com.mjc.school.service.BaseService;
 import com.mjc.school.dto.AuthorDto;
 import com.mjc.school.mapper.AuthorMapper;
+import com.mjc.school.validation.ValidateId;
+import com.mjc.school.validation.ValidateLength;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Service
 public class AuthorService implements BaseService<AuthorRequest, AuthorDto, Long> {
+    private final String CHECK_AUTHOR_ID = "CHECK_AUTHOR_ID";
     private final BaseRepository<AuthorEntity, Long> baseRepository;
 
     @Autowired
@@ -29,6 +31,7 @@ public class AuthorService implements BaseService<AuthorRequest, AuthorDto, Long
     }
 
     @Override
+    @ValidateId(type = CHECK_AUTHOR_ID)
     public AuthorDto readById(Long id) {
         return baseRepository.readById(id)
                 .map(this::mapToAuthorDto)
@@ -36,6 +39,7 @@ public class AuthorService implements BaseService<AuthorRequest, AuthorDto, Long
     }
 
     @Override
+    @ValidateLength
     public AuthorDto create(AuthorRequest createRequest) {
         AuthorDto authorDto = new AuthorDto(
                 createRequest.getName(),
@@ -46,10 +50,8 @@ public class AuthorService implements BaseService<AuthorRequest, AuthorDto, Long
     }
 
     @Override
+    @ValidateId
     public AuthorDto update(AuthorRequest updateRequest) {
-        if (!baseRepository.existById(updateRequest.getId())) {
-            throw new RuntimeException();
-        }
         AuthorEntity authorEntity = baseRepository.readById(updateRequest.getId()).orElseThrow();
         authorEntity.setName(updateRequest.getName());
         authorEntity.setLastUpdatedDate(LocalDateTime.now());
@@ -57,10 +59,8 @@ public class AuthorService implements BaseService<AuthorRequest, AuthorDto, Long
     }
 
     @Override
+    @ValidateId(type = CHECK_AUTHOR_ID)
     public boolean deleteById(Long id) {
-        if (!baseRepository.existById(id)) {
-            throw new RuntimeException();
-        }
         return baseRepository.deleteById(id);
     }
 

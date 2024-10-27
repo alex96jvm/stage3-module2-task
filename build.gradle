@@ -20,14 +20,14 @@ subprojects {
 
     dependencies {
         implementation "org.springframework:spring-context:$springVersion"
-
         testImplementation "org.springframework:spring-test:$springVersion"
         testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jupiterVersion"
         testImplementation "com.tngtech.archunit:archunit:$archUnitVersion"
-
         annotationProcessor "org.mapstruct:mapstruct-processor:$mapstructVersion"
         implementation "org.mapstruct:mapstruct:$mapstructVersion"
+        implementation "org.aspectj:aspectjrt:1.9.22.1"
+        implementation "org.aspectj:aspectjweaver:1.9.22.1"
     }
     test {
         useJUnitPlatform()

@@ -4,6 +4,7 @@ import com.mjc.school.annotation.AuthorCommandProcessor;
 import com.mjc.school.annotation.NewsCommandProcessor;
 import com.mjc.school.controller.impl.AuthorController;
 import com.mjc.school.controller.impl.NewsController;
+import com.mjc.school.validation.ErrorCodes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.HashMap;
@@ -108,10 +109,10 @@ public class View {
         System.out.println(ENTER_NEWS_ID);
         try {
             params.put("id", validateNumericValue(scanner.nextLine(), NEWS));
+            System.out.println(newsCommandProcessor.processCommand("readById", params));
         } catch (Exception e) {
             readByIdNews(scanner);
         }
-        System.out.println(newsCommandProcessor.processCommand("readById", params));
     }
 
     private void createNews(Scanner scanner) {
@@ -124,10 +125,10 @@ public class View {
         System.out.println(ENTER_AUTHOR_ID);
         try {
             params.put("authorId", validateNumericValue(scanner.nextLine(), AUTHOR));
+            System.out.println(newsCommandProcessor.processCommand("create", params));
         } catch (Exception e) {
             createNews(scanner);
         }
-        System.out.println(newsCommandProcessor.processCommand("create", params));
     }
 
     private void updateNews(Scanner scanner) {
@@ -146,10 +147,10 @@ public class View {
         System.out.println(ENTER_AUTHOR_ID);
         try {
             params.put("authorId", validateNumericValue(scanner.nextLine(), AUTHOR));
+            System.out.println(newsCommandProcessor.processCommand("update", params));
         } catch (Exception e) {
             updateNews(scanner);
         }
-        System.out.println(newsCommandProcessor.processCommand("update", params));
     }
 
     private void deleteNews(Scanner scanner) {
@@ -158,10 +159,10 @@ public class View {
         System.out.println(ENTER_NEWS_ID);
         try {
             params.put("id", validateNumericValue(scanner.nextLine(), NEWS));
+            System.out.println(newsCommandProcessor.processCommand("delete", params));
         } catch (Exception e) {
             deleteNews(scanner);
         }
-        System.out.println(newsCommandProcessor.processCommand("delete", params));
     }
 
     private void readAllAuthors() {
@@ -175,10 +176,10 @@ public class View {
         System.out.println(ENTER_AUTHOR_ID);
         try {
             params.put("id", validateNumericValue(scanner.nextLine(), AUTHOR));
+            System.out.println(authorCommandProcessor.processCommand("readById", params));
         } catch (Exception e) {
             readByIdAuthor(scanner);
         }
-        System.out.println(authorCommandProcessor.processCommand("readById", params));
     }
 
     private void createAuthor(Scanner scanner) {
@@ -186,7 +187,12 @@ public class View {
         Map<String, Object> params = new HashMap<>();
         System.out.println(ENTER_AUTHOR_NAME);
         params.put("name", scanner.nextLine());
-        System.out.println(authorCommandProcessor.processCommand("create", params));
+        try {
+            System.out.println(authorCommandProcessor.processCommand("create", params));
+        } catch (Exception e) {
+            createAuthor(scanner);
+        }
+
     }
 
     private void updateAuthor(Scanner scanner) {
@@ -200,7 +206,11 @@ public class View {
         }
         System.out.println(ENTER_AUTHOR_NAME);
         params.put("name", scanner.nextLine());
-        System.out.println(authorCommandProcessor.processCommand("update", params));
+        try {
+            System.out.println(authorCommandProcessor.processCommand("update", params));
+        } catch (Exception e) {
+            updateAuthor(scanner);
+        }
     }
 
     private void deleteAuthor(Scanner scanner) {
@@ -209,17 +219,17 @@ public class View {
         System.out.println(ENTER_AUTHOR_ID);
         try {
             params.put("id", validateNumericValue(scanner.nextLine(), AUTHOR));
+            System.out.println(authorCommandProcessor.processCommand("delete", params));
         } catch (Exception e) {
             deleteAuthor(scanner);
         }
-        System.out.println(authorCommandProcessor.processCommand("delete", params));
     }
 
     private Long validateNumericValue(String id, String subValue) throws Exception {
         try {
             return Long.parseLong(id);
         } catch (NumberFormatException e) {
-            System.out.println(subValue + " Id should be number");
+            System.out.println(ErrorCodes.NOT_NUMERIC + subValue + " Id should be number");
             throw new Exception();
         }
     }
