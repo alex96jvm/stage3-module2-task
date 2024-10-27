@@ -1,7 +1,7 @@
-package com.mjc.school.mapper;
+package com.mjc.school.service.mapper;
 
-import com.mjc.school.model.impl.AuthorEntity;
-import com.mjc.school.dto.AuthorDto;
+import com.mjc.school.repository.model.impl.AuthorEntity;
+import com.mjc.school.service.dto.AuthorDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

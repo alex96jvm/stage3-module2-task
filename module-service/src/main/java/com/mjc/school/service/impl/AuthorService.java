@@ -1,13 +1,13 @@
 package com.mjc.school.service.impl;
 
-import com.mjc.school.request.AuthorRequest;
+import com.mjc.school.service.request.AuthorRequest;
 import com.mjc.school.repository.BaseRepository;
-import com.mjc.school.model.impl.AuthorEntity;
+import com.mjc.school.repository.model.impl.AuthorEntity;
 import com.mjc.school.service.BaseService;
-import com.mjc.school.dto.AuthorDto;
-import com.mjc.school.mapper.AuthorMapper;
-import com.mjc.school.validation.ValidateId;
-import com.mjc.school.validation.ValidateLength;
+import com.mjc.school.service.dto.AuthorDto;
+import com.mjc.school.service.mapper.AuthorMapper;
+import com.mjc.school.service.validation.ValidateId;
+import com.mjc.school.service.validation.ValidateLength;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;

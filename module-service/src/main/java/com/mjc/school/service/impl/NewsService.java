@@ -1,13 +1,13 @@
 package com.mjc.school.service.impl;
 
-import com.mjc.school.request.NewsRequest;
+import com.mjc.school.service.request.NewsRequest;
 import com.mjc.school.repository.BaseRepository;
-import com.mjc.school.model.impl.NewsEntity;
+import com.mjc.school.repository.model.impl.NewsEntity;
 import com.mjc.school.service.BaseService;
-import com.mjc.school.dto.NewsDto;
-import com.mjc.school.mapper.NewsMapper;
-import com.mjc.school.validation.ValidateId;
-import com.mjc.school.validation.ValidateLength;
+import com.mjc.school.service.dto.NewsDto;
+import com.mjc.school.service.mapper.NewsMapper;
+import com.mjc.school.service.validation.ValidateId;
+import com.mjc.school.service.validation.ValidateLength;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;

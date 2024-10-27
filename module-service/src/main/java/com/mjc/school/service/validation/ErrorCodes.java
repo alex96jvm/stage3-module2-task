@@ -1,4 +1,4 @@
-package com.mjc.school.validation;
+package com.mjc.school.service.validation;
 
 public final class ErrorCodes {
     private static final String ERROR_PREFIX = "ERROR_CODE: %s ERROR_MESSAGE: ";

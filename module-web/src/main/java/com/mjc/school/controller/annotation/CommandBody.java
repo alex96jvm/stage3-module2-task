@@ -1,4 +1,4 @@
-package com.mjc.school.annotation;
+package com.mjc.school.controller.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +7,5 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CommandParam {
-    String value();
+public @interface CommandBody {
 }

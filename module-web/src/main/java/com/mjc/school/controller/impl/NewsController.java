@@ -1,11 +1,11 @@
 package com.mjc.school.controller.impl;
 
-import com.mjc.school.annotation.CommandBody;
-import com.mjc.school.annotation.CommandHandler;
-import com.mjc.school.annotation.CommandParam;
-import com.mjc.school.request.NewsRequest;
+import com.mjc.school.controller.annotation.CommandBody;
+import com.mjc.school.controller.annotation.CommandHandler;
+import com.mjc.school.controller.annotation.CommandParam;
+import com.mjc.school.service.request.NewsRequest;
 import com.mjc.school.service.BaseService;
-import com.mjc.school.dto.NewsDto;
+import com.mjc.school.service.dto.NewsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import java.util.List;

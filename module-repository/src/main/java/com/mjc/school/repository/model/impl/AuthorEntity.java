@@ -1,6 +1,6 @@
-package com.mjc.school.model.impl;
+package com.mjc.school.repository.model.impl;
 
-import com.mjc.school.model.BaseEntity;
+import com.mjc.school.repository.model.BaseEntity;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

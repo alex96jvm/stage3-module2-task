@@ -1,23 +1,19 @@
-package com.mjc.school.dto;
+package com.mjc.school.service.dto;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
-public class NewsDto {
+public class AuthorDto {
     private Long id;
-    private String title;
-    private String content;
+    private String name;
     private LocalDateTime createDate;
     private LocalDateTime lastUpdatedDate;
-    private Long authorId;
 
-    public NewsDto(String title, String content, LocalDateTime createDate, LocalDateTime lastUpdatedDate, Long authorId) {
-        this.title = title;
-        this.content = content;
+    public AuthorDto(String name, LocalDateTime createDate, LocalDateTime lastUpdatedDate) {
+        this.name = name;
         this.createDate = createDate;
         this.lastUpdatedDate = lastUpdatedDate;
-        this.authorId = authorId;
     }
 
     public Long getId() {
@@ -28,20 +24,12 @@ public class NewsDto {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+    public void setName(String title) {
+        this.name = title;
     }
 
     public LocalDateTime getCreateDate() {
@@ -60,36 +48,26 @@ public class NewsDto {
         this.lastUpdatedDate = lastUpdatedDate;
     }
 
-    public Long getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        NewsDto newsDTO = (NewsDto) o;
-        return Objects.equals(title, newsDTO.title) && Objects.equals(content, newsDTO.content) && Objects.equals(authorId, newsDTO.authorId);
+        AuthorDto authorDto = (AuthorDto) o;
+        return Objects.equals(id, authorDto.id) && Objects.equals(name, authorDto.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, content, authorId);
+        return Objects.hash(id, name);
     }
 
     @Override
     public String toString() {
-        return "NewsDtoResponse[" +
+        return "AuthorDtoResponse[" +
                 "id=" + id +
-                ", title=" + title +
-                ", content=" + content +
+                ", name=" + name +
                 ", createDate=" + createDate.truncatedTo(ChronoUnit.SECONDS) +
                 ", lastUpdatedDate=" + lastUpdatedDate.truncatedTo(ChronoUnit.SECONDS) +
-                ", authorId=" + authorId +
                 "]\n";
     }
 }

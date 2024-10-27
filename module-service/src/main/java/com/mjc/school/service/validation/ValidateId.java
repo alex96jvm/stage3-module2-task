@@ -1,11 +1,13 @@
-package com.mjc.school.annotation;
+package com.mjc.school.service.validation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.PARAMETER)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CommandBody {
+public @interface ValidateId {
+    String type() default "";
 }
+

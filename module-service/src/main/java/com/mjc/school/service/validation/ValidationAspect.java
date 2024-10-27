@@ -1,9 +1,9 @@
-package com.mjc.school.validation;
+package com.mjc.school.service.validation;
 
 import com.mjc.school.repository.impl.AuthorRepository;
 import com.mjc.school.repository.impl.NewsRepository;
-import com.mjc.school.request.AuthorRequest;
-import com.mjc.school.request.NewsRequest;
+import com.mjc.school.service.request.AuthorRequest;
+import com.mjc.school.service.request.NewsRequest;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;

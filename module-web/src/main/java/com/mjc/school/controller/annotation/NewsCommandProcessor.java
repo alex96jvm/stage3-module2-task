@@ -1,20 +1,18 @@
-package com.mjc.school.annotation;
+package com.mjc.school.controller.annotation;
 
-import com.mjc.school.request.AuthorRequest;
-import com.mjc.school.request.NewsRequest;
-
+import com.mjc.school.service.request.NewsRequest;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AuthorCommandProcessor {
+public class NewsCommandProcessor {
 
     private final Map<String, Method> commandHandlers = new HashMap<>();
     private final Object controller;
 
-    public AuthorCommandProcessor(Object controller) {
+    public NewsCommandProcessor(Object controller) {
         this.controller = controller;
         initializeCommandHandlers();
     }
@@ -43,8 +41,10 @@ public class AuthorCommandProcessor {
                         String paramName = ((CommandParam) annotation).value();
                         args[i] = params.get(paramName);
                     } else if (annotation instanceof CommandBody) {
-                        AuthorRequest newsRequest = new AuthorRequest(
-                                (String) params.get("name")
+                        NewsRequest newsRequest = new NewsRequest(
+                                (String) params.get("title"),
+                                (String) params.get("content"),
+                                (Long) params.get("authorId")
                         );
                         if (params.containsKey("id")) {
                             Long id = (Long) params.get("id");

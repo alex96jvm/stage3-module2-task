@@ -1,6 +1,6 @@
-package com.mjc.school.datasource;
+package com.mjc.school.repository.datasource;
 
-import com.mjc.school.model.impl.AuthorEntity;
+import com.mjc.school.repository.model.impl.AuthorEntity;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;

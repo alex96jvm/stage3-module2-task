@@ -1,9 +1,9 @@
 package com.mjc.school.service.impl;
 
-import com.mjc.school.datasource.AuthorDataSource;
-import com.mjc.school.datasource.NewsDataSource;
+import com.mjc.school.repository.datasource.AuthorDataSource;
+import com.mjc.school.repository.datasource.NewsDataSource;
 import com.mjc.school.repository.impl.NewsRepository;
-import com.mjc.school.request.NewsRequest;
+import com.mjc.school.service.request.NewsRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

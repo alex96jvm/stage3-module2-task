@@ -1,7 +1,7 @@
 package com.mjc.school;
 
-import com.mjc.school.annotation.AuthorCommandProcessor;
-import com.mjc.school.annotation.NewsCommandProcessor;
+import com.mjc.school.controller.annotation.AuthorCommandProcessor;
+import com.mjc.school.controller.annotation.NewsCommandProcessor;
 import com.mjc.school.controller.impl.AuthorController;
 import com.mjc.school.controller.impl.NewsController;
 import org.springframework.beans.factory.annotation.Autowired;
