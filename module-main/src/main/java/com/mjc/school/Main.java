@@ -1,5 +1,6 @@
 package com.mjc.school;
 
+import com.mjc.school.controller.AppConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {

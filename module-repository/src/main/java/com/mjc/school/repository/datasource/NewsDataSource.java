@@ -2,7 +2,6 @@ package com.mjc.school.repository.datasource;
 
 import com.mjc.school.repository.model.impl.NewsEntity;
 import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;

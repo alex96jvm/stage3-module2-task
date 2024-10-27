@@ -1,6 +1,6 @@
-package com.mjc.school;
+package com.mjc.school.controller;
 
-import com.mjc.school.validation.ValidationAspect;
+import com.mjc.school.service.validation.ValidationAspect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
