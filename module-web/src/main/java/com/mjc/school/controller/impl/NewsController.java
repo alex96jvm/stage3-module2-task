@@ -1,8 +1,8 @@
 package com.mjc.school.controller.impl;
 
-import com.mjc.school.controller.annotation.CommandBody;
-import com.mjc.school.controller.annotation.CommandHandler;
-import com.mjc.school.controller.annotation.CommandParam;
+import com.mjc.school.controller.processor.CommandBody;
+import com.mjc.school.controller.processor.CommandHandler;
+import com.mjc.school.controller.processor.CommandParam;
 import com.mjc.school.service.request.NewsRequest;
 import com.mjc.school.service.BaseService;
 import com.mjc.school.service.dto.NewsDto;

@@ -1,6 +1,7 @@
-package com.mjc.school.controller.annotation;
+package com.mjc.school.controller.processor;
 
 import com.mjc.school.service.request.NewsRequest;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

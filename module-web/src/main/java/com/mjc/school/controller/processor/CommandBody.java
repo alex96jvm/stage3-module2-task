@@ -1,4 +1,4 @@
-package com.mjc.school.controller.annotation;
+package com.mjc.school.controller.processor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
