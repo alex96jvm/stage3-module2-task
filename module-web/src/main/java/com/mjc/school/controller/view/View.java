@@ -27,6 +27,9 @@ public class View {
     public View(NewsController newsController, AuthorController authorController){
         newsCommandProcessor = new NewsCommandProcessor(newsController);
         authorCommandProcessor = new AuthorCommandProcessor(authorController);
+    }
+
+    public void start() {
         showControlMenu();
         selectOperation();
     }
