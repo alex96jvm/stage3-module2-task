@@ -1,4 +1,4 @@
-package com.mjc.school;
+package com.mjc.school.controller.view;
 
 import com.mjc.school.controller.processor.AuthorCommandProcessor;
 import com.mjc.school.controller.processor.NewsCommandProcessor;
